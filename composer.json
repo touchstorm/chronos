@@ -9,6 +9,7 @@
       "email": "seomike@gmail.com"
     }
   ],
+  "minimum-stability": "stable",
   "repositories": [
     {
       "type": "vcs",
