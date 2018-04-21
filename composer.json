@@ -1,0 +1,19 @@
+{
+  "name": "touchstorm/chronos",
+  "description": "PHP Cron Management Framework",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michael Waltman",
+      "email": "seomike@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+}
