@@ -13,15 +13,11 @@
     {
       "type": "vcs",
       "url": "git@bitbucket.org:vootapp/framework.git"
-    },
-    {
-      "type": "vcs",
-      "url": "git@bitbucket.org:vootapp/sdk.git"
     }
   ],
   "require": {
-    "vootapp/sdk" : "dev-master",
-    "vootapp/framework": "dev-master"
+    "vootapp/framework": "dev-master",
+    "vlucas/phpdotenv": "~1.1"
   },
   "require-dev": {
     "phpunit/phpunit": "6.3.*"
