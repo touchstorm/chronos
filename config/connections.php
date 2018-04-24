@@ -1,7 +1,7 @@
 <?php
 /*
  * -------------------------------------------------
- * Database connections
+ * Database connection definitions
  * -------------------------------------------------
  */
 return [
