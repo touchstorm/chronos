@@ -7,7 +7,6 @@ use Chronos\Services\ThreadedService;
 
 class CoreServices extends ThreadedService
 {
-
     /**
      * Threaded services require a running() method implementation
      * All dependency needed to execute a the thread dispatcher will be
