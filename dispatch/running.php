@@ -5,7 +5,7 @@ if (!isset($argv[1])) {
     exit(1);
 }
 
-require_once __DIR__ . '/bootstrap/start.php';
+require_once __DIR__ . '/../bootstrap/start.php';
 
 /*
  * -------------------------------------------------
@@ -35,7 +35,7 @@ $app = $app->execute(["\\App\\Console\\Services\\" . $service, 'running'], [':ap
  */
 try {
 
-    $app->execute([Chronos\Application\Dispatchers\Threads::class, 'handle'], [':options' => ['vectors' => [$service]]]);
+    $app->execute([Chronos\Dispatchers\Threads::class, 'handle'], [':options' => ['vectors' => [$service]]]);
 
 } catch (Exception $e) {
     echo 'File: ' . $e->getFile() . ' | ' . $e->getLine() . ' | ' . $e->getMessage() . PHP_EOL;

@@ -13,7 +13,7 @@ if (!isset($argv[1])) {
  * - Create IoC Container
  * - Load and boot Database capsule (Eloquent)
  */
-require_once __DIR__ . '/bootstrap/start.php';
+require_once __DIR__ . '/../bootstrap/start.php';
 
 /*
  * -------------------------------------------------
@@ -55,7 +55,7 @@ $app = $app->execute(["\\Chronos\\Console\\Services\\" . $service, 'thread'], [
  */
 try {
 
-    $app->execute([\Chronos\Application\Threads\Contracts\ThreadContract::class, 'handle']);
+    $app->execute([\Chronos\Threads\Contracts\ThreadContract::class, 'handle']);
 
 } catch (Exception $e) {
     echo 'File: ' . $e->getFile() . ' | ' . $e->getLine() . ' | ' . $e->getMessage() . PHP_EOL;

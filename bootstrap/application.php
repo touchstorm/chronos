@@ -18,7 +18,7 @@ $app = new Auryn\Injector();
  * - Boot Eloquent
  */
 $capsule = new \Illuminate\Database\Capsule\Manager;
-$connections = require_once __DIR__ . '/../../config/database.php';
+$connections = require_once __DIR__ . '/../config/database.php';
 
 // Set connections
 foreach ($connections as $name => $connection) {
@@ -36,6 +36,6 @@ $capsule->bootEloquent();
  */
 //require_once __DIR__ . '/../Providers/providers.php';
 
-$app->share($capsule);
+//$app->share($capsule);
 
 return $app;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "75d174af695acd829fb42ada9411c87d",
+    "content-hash": "0e2f6e5cbef2ace0529f3c43487ec3f3",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -328,16 +328,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.26.4",
+            "version": "1.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "e3d9014279133a3cccc01f6a691322a2d5a6a87b"
+                "reference": "ef81c39b67200dcd7401c24363dcac05ac3a4fe9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e3d9014279133a3cccc01f6a691322a2d5a6a87b",
-                "reference": "e3d9014279133a3cccc01f6a691322a2d5a6a87b",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ef81c39b67200dcd7401c24363dcac05ac3a4fe9",
+                "reference": "ef81c39b67200dcd7401c24363dcac05ac3a4fe9",
                 "shasum": ""
             },
             "require": {
@@ -372,7 +372,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-04-17T15:35:42+00:00"
+            "time": "2018-04-23T09:02:57+00:00"
         },
         {
             "name": "psr/container",
@@ -711,7 +711,7 @@
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:vootapp/framework.git",
-                "reference": "2e04a59733f91a1c24bf1d7b176eada73f45e650"
+                "reference": "c7a7559862049809e1742b32518f85f40ce01695"
             },
             "require": {
                 "dragonmantank/cron-expression": "^2.1",
@@ -721,7 +721,12 @@
             "require-dev": {
                 "phpunit/phpunit": "6.3.*"
             },
-            "type": "project",
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Chronos\\": "src/Chronos"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -732,7 +737,7 @@
                 }
             ],
             "description": "Chronos Framework Core. Cron management system.",
-            "time": "2018-04-21T03:04:38+00:00"
+            "time": "2018-04-23T16:09:21+00:00"
         }
     ],
     "packages-dev": [

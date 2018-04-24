@@ -18,14 +18,14 @@ require_once __DIR__ . '/bootstrap/start.php';
  * -------------------------------------------------
  * - Collect all user defined dispatch
  */
-$task = $app->make(\Chronos\Application\Tasks\TaskCollector::class);
+$task = $app->make(\Chronos\Tasks\TaskCollector::class);
 
 /*
  * -------------------------------------------------
  * Load the task routing definitions & share
  * -------------------------------------------------
  */
-require_once getenv('APP_BASE') . '/Tasks.php';
+require_once getenv('APP_BASE') . '/tasks/Tasks.php';
 $app->share($task);
 
 /*
@@ -35,7 +35,7 @@ $app->share($task);
  * - Checks all running dispatch.
  * - Relaunches any running dispatch that may have stopped
  */
-$app->execute([\Chronos\Application\TaskMaster\Watcher::class, 'dispatch']);
+$app->execute([\Chronos\TaskMaster\Watcher::class, 'dispatch']);
 
 /*
  * -------------------------------------------------
@@ -43,4 +43,4 @@ $app->execute([\Chronos\Application\TaskMaster\Watcher::class, 'dispatch']);
  * -------------------------------------------------
  * - Checks server datetime and dispatch available crons
  */
-$app->execute([\Chronos\Application\TaskMaster\Dispatcher::class, 'dispatch']);
+$app->execute([\Chronos\TaskMaster\Dispatcher::class, 'dispatch']);
