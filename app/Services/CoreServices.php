@@ -2,34 +2,31 @@
 
 namespace App\Console\Services;
 
-use Auryn\Injector;
 use Chronos\Services\ThreadedService;
 
 class CoreServices extends ThreadedService
 {
     /**
      * Threaded services require a running() method implementation
-     * All dependency needed to execute a the thread dispatcher will be
-     * All dependency needed to execute a the thread dispatcher will be
+     * All dependency bindings for the running service can be
      * bound in this method.
-     * @param Injector $app
-     * @return Injector
+     * @return void
      */
-    public function running(Injector $app)
+    public function running()
     {
-        return $app;
+        // $this->app->bind()
+        // $this->app->share()
     }
 
     /**
      * Threaded services require a thread() method implementation
-     * All dependency needed to execute a thread will be
+     * All dependency bindings needed in the threads can be
      * bound in this method.
-     * @param Injector $app
-     * @param $id
-     * @return Injector
+     * @return void
      */
-    public function thread(Injector $app, $id)
+    public function thread()
     {
-        return $app;
+        // $this->app->bind()
+        // $this->app->share()
     }
 }

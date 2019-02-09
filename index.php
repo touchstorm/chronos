@@ -14,33 +14,37 @@ require_once __DIR__ . '/bootstrap/start.php';
 
 /*
  * -------------------------------------------------
- * Create Task Collector
- * -------------------------------------------------
- * - Collect all user defined dispatch
- */
-$task = $app->make(\Chronos\Tasks\TaskCollector::class);
-
-/*
- * -------------------------------------------------
- * Load the task routing definitions & share
+ * Application Container
  * -------------------------------------------------
  */
-require_once getenv('APP_BASE') . '/tasks/Tasks.php';
-$app->share($task);
+require_once __DIR__ . '/bootstrap/application.php';
 
 /*
  * -------------------------------------------------
  * Task Watcher (Tasks)
  * -------------------------------------------------
  * - Checks all running dispatch.
- * - Relaunches any running dispatch that may have stopped
+ * - Relaunches any running dispatcher that may have stopped
+ * - non i/o blocking running tasks.
  */
-$app->execute([\Chronos\TaskMaster\Watcher::class, 'dispatch']);
+//$app->execute([\App\Dispatchers\Running::class, 'dispatch']);
+$app->execute([\Chronos\TaskMaster\Watcher::class, 'dispatch'], [
+    ':options' => [
+        'setVerbose' => getenv('VERBOSE', false), // will output to console
+    ]
+]);
 
 /*
  * -------------------------------------------------
- * Task Dispatcher (Tasks)
+ * Task Scheduled (Tasks)
  * -------------------------------------------------
  * - Checks server datetime and dispatch available crons
+ * - blocking and non blocking i/o tasks
+ * - TODO use Amphp, so scheduled tasks are all non blocking i/o tasks
  */
-$app->execute([\Chronos\TaskMaster\Dispatcher::class, 'dispatch']);
+//$app->execute([\App\Dispatchers\Scheduled::class, 'dispatch']);
+$app->execute([\Chronos\TaskMaster\Dispatcher::class, 'dispatch'], [
+    ':options' => [
+        'setVerbose' => (bool)getenv('VERBOSE'), // will opt put to console
+    ]
+]);

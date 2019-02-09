@@ -12,18 +12,6 @@
         <testsuite name="Application Test Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
-        <testsuite suffix="Test.php" name="wiki-unit">
-            <directory>./tests/unit/wiki</directory>
-        </testsuite>
-        <testsuite suffix="Test.php" name="client-unit">
-            <directory>./tests/unit/client</directory>
-        </testsuite>
-        <testsuite suffix="Test.php" name="analytics-features">
-            <directory>./tests/features/analytics</directory>
-        </testsuite>
-        <testsuite suffix="Test.php" name="analytics-unit">
-            <directory>./tests/unit/analytics</directory>
-        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">

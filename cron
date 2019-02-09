@@ -1,0 +1,54 @@
+#!/usr/bin/env php
+<?php
+
+define("CURRENT_TIME", (new \DateTime())->format('Y-m-d H:i:s'));
+
+/*
+ * -------------------------------------------------
+ * Bootstrap
+ * -------------------------------------------------
+ * - Load env variables
+ * - Select database connections based on environment
+ * - Create IoC container
+ */
+require_once __DIR__ . '/bootstrap/start.php';
+
+/*
+ * -------------------------------------------------
+ * Create Task Collector
+ * -------------------------------------------------
+ * - Collect all user defined tasks for dispatch
+ */
+$task = $app->make(\Chronos\Tasks\TaskCollector::class);
+
+/*
+ * -------------------------------------------------
+ * Load the task routing definitions & share
+ * -------------------------------------------------
+ */
+$taskDirector = __DIR__ . '/tasks/';
+$taskFiles = array_diff(scandir($taskDirector), ['..', '.']);
+
+foreach ($taskFiles as $file) {
+
+    if (substr_compare($file, 'Tasks.php', -strlen('Tasks.php')) === 0) {
+        require_once($taskDirector . DIRECTORY_SEPARATOR . $file);
+        $app->share($task);
+    }
+}
+
+$command = $argv[1];
+
+switch ($command) {
+
+    case 'kill' :
+
+        $app->execute([\App\Dispatchers\Destroy::class, 'dispatch']);
+        break;
+
+    case 'start':
+
+        $app->execute([\App\Dispatchers\Running::class, 'dispatch']);
+        $app->execute([\App\Dispatchers\Scheduled::class, 'dispatch']);
+        break;
+}
